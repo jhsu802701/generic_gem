@@ -1,0 +1,34 @@
+AT START:
+1.  Set configuration
+#!/usr/bin/env sh
+echo "---" > $HOME/.bundle/config
+echo "BUNDLE_GEM__COC: true" >> $HOME/.bundle/config
+echo "BUNDLE_GEM__MIT: true" >> $HOME/.bundle/config
+echo "BUNDLE_GEM__TEST: rspec" >> $HOME/.bundle/config
+/usr/bin/env ruby <<-EORUBY
+ 
+  StringInFile.replace("0.0.1", "0.0.0", (lib/gem name/version.txt))
+ 
+EORUBY
+
+2.  bundle gem (name of gem)
+
+3.  Make bin/setup and bin/console executable
+chmod +x bin/setup
+chmod +x bin/console
+
+4.  Add gem_test file
+echo "#!/bin/bash" > gem_test
+echo "" >> gem_test
+echo "# Run this script to test this gem." >> gem_test
+echo "bin/setup" >> gem_test
+echo "rake" >> gem_test
+chmod +x bin/gem_test
+
+5.  Add gem_console file
+
+echo "#!/bin/bash" > gem_console
+echo "" >> gem_console
+echo "# Run this script to test this gem in an irb shell." >> gem_console
+echo "bin/setup" >> gem_console
+chmod +x bin/gem_console
