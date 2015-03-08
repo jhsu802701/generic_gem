@@ -32,3 +32,5 @@ echo "" >> gem_console
 echo "# Run this script to test this gem in an irb shell." >> gem_console
 echo "bin/setup" >> gem_console
 chmod +x bin/gem_console
+
+6.  gemspec: Add rspec to development dependency list
