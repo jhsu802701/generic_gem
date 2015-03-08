@@ -23,7 +23,7 @@ echo "" >> gem_test
 echo "# Run this script to test this gem." >> gem_test
 echo "bin/setup" >> gem_test
 echo "rake" >> gem_test
-chmod +x bin/gem_test
+chmod +x gem_test
 
 5.  Add gem_console file
 
