@@ -2,7 +2,7 @@ require "generic_gem/version"
 require "string_in_file"
 
 module GenericGem
-  def self.create (gem_name)
+  def self.create (gem_name, your_name)
     dir_main = File.expand_path("../../", __FILE__)
     subdir_main = gem_name
     
@@ -24,6 +24,11 @@ module GenericGem
     puts "**********************"
     puts "Initial version: 0.0.0"
     StringInFile.replace("0.1.0", "0.0.0", "#{subdir_main}/lib/#{gem_name}/version.rb")
+
+    puts "*****************************************************************"
+    puts "Filling in your name as the owner of the copyright in LICENSE.txt"
+    puts "Your name: #{your_name}"
+    StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/LICENSE.txt")
     
   end
 end
