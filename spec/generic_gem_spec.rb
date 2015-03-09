@@ -21,6 +21,7 @@ describe GenericGem do
     # Check the gem_test.sh script
     # Check the gem_console.sh script
     # Check the *_spec.rb file
+    # Check .gitignore for tmp, tmp*, and .DS_Store
     
   end
   

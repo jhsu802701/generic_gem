@@ -47,3 +47,6 @@ task :test => :spec
 
 8.  *_spec.rb:
 expect(false).to eq(true) -> expect(true).to eq(true)
+
+9.  .gitignore
+include tmp, tmp*, and .DS_Store
