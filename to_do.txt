@@ -45,5 +45,5 @@ RSpec::Core::RakeTask.new
 task :default => :spec
 task :test => :spec
 
-8.  *_gem_spec.rb:
+8.  *_spec.rb:
 expect(false).to eq(true) -> expect(true).to eq(true)
