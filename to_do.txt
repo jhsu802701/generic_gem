@@ -33,7 +33,8 @@ echo "# Run this script to test this gem in an irb shell." >> gem_console.sh
 echo "bin/console" >> gem_console.sh
 chmod +x gem_console.sh
 
-6.  gemspec: Add rspec to development dependency list
+6.  gemspec: Add rspec to development dependency list, replace "\nend" with
+'  spec.add_development_dependency "rspec"\nend'
 
 7.  Rakefile:
 require "bundler/gem_tasks"
@@ -43,3 +44,6 @@ RSpec::Core::RakeTask.new
 
 task :default => :spec
 task :test => :spec
+
+8.  *_gem_spec.rb:
+expect(false).to eq(true) -> expect(true).to eq(true)
