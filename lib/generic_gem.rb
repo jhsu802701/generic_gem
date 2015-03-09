@@ -41,6 +41,14 @@ module GenericGem
     puts "*****************************"
     puts "Adding the gem_test.sh script"
     system("cp #{dir_main}/lib/files_to_add/gem_test.sh #{subdir_main}")
+
+    puts "********************************"
+    puts "Adding the gem_console.sh script"
+    system("cp #{dir_main}/lib/files_to_add/gem_console.sh #{subdir_main}")
+
+    puts "*******************"
+    puts "Adding the Rakefile"
+    system("cp #{dir_main}/lib/files_to_add/Rakefile #{subdir_main}")
     
   end
 end
