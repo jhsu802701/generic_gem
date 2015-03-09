@@ -11,6 +11,7 @@ describe GenericGem do
   
   describe 'process' do
     require 'string_in_file'
+    system("rm -rf tmp")
     GenericGem.create("tmp")
     #system("rm $HOME/.bundle/config")
     # Create new gem in tmp directory
