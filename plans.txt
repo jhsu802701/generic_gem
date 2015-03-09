@@ -7,7 +7,7 @@ echo "BUNDLE_GEM__MIT: true" >> $HOME/.bundle/config
 echo "BUNDLE_GEM__TEST: rspec" >> $HOME/.bundle/config
 /usr/bin/env ruby <<-EORUBY
  
-  StringInFile.replace("0.0.1", "0.0.0", (lib/gem name/version.txt))
+  StringInFile.replace("0.1.0", "0.0.0", (lib/gem name/version.txt))
  
 EORUBY
 
