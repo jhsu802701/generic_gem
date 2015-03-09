@@ -49,6 +49,30 @@ module GenericGem
     puts "*******************"
     puts "Adding the Rakefile"
     system("cp #{dir_main}/lib/files_to_add/Rakefile #{subdir_main}")
+
+    puts "******************************"
+    puts "Completing the .gitignore file"
+    puts "Adding tmp* and .DS_Store"
+    open("#{subdir_main}/.gitignore", 'a') { |f|
+      f << "tmp*"
+      f << ".DS_Store"
+    }
     
+    puts "*********************************"
+    puts "Adding rspec to the .gemspec file"
+    path_old = "#{subdir_main}/#{gem_name}.gemspec"
+    path_new = "#{subdir_main}/#{gem_name}_new.gemspec"
+    file_w = open(path_new, 'w')
+    File.readlines(path_old).each do |line|
+      if line.include? 'spec.add_development_dependency "rake"'
+        file_w.write(line)
+        file_w.write('  spec.add_development_dependency "rspec"')
+        file_w.write("\n")
+      else
+        file_w.write(line)
+      end
+    end
+    system("rm #{path_old}")
+    system("mv #{path_new} #{path_old}")
   end
 end

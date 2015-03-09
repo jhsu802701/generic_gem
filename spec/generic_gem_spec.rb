@@ -60,8 +60,15 @@ describe GenericGem do
       expect(StringInFile.present('task :test => :spec', "tmp/Rakefile")).to eq(true)
     end
 
-    # Check the *_spec.rb file
-    # Check .gitignore for tmp, tmp*, and .DS_Store
+    it "The .gitignore file includes tmp, tmp*, and ,DS_Store" do
+      expect(StringInFile.present("tmp", "tmp/.gitignore")).to eq(true)
+      expect(StringInFile.present("tmp*", "tmp/.gitignore")).to eq(true)
+      expect(StringInFile.present(".DS_Store", "tmp/.gitignore")).to eq(true)
+    end
+
+    it "The .gemspec file includes rspec as a development dependency" do
+      expect(StringInFile.present('spec.add_development_dependency "rspec"', "tmp/tmp.gemspec")).to eq(true)
+    end
     
   end
   
