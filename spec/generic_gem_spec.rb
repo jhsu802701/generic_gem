@@ -38,8 +38,15 @@ describe GenericGem do
       expect(StringInFile.present("expect(true).to eq(true)", "tmp/spec/tmp_spec.rb")).to eq(true)
     end
   
-    # Check that bin/setup and bin/console are executable
-    # Check the gem_test.sh script
+    it "The bin/console file and bin/setup files are executable" do
+      expect(File.executable?("tmp/bin/console")).to eq(true)
+      expect(File.executable?("tmp/bin/setup")).to eq(true)
+    end
+
+    it "The gem_test.sh script is provided" do
+      expect(StringInFile.present("bin/setup", "tmp/gem_test.sh")).to eq(true)
+      expect(StringInFile.present("rake", "tmp/gem_test.sh")).to eq(true)
+    end
     # Check the gem_console.sh script
     # Check the *_spec.rb file
     # Check .gitignore for tmp, tmp*, and .DS_Store

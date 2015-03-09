@@ -33,6 +33,14 @@ module GenericGem
     puts "********************************"
     puts "Revising the initial rspec tests"
     StringInFile.replace("expect(false).to eq(true)", "expect(true).to eq(true)", "#{subdir_main}/spec/#{gem_name}_spec.rb")
+
+    puts "*****************************************************"
+    puts "Making the bin/console and bin/setup files executable"
+    system("chmod +x #{subdir_main}/bin/*")
+
+    puts "*****************************"
+    puts "Adding the gem_test.sh script"
+    system("cp #{dir_main}/lib/files_to_add/gem_test.sh #{subdir_main}")
     
   end
 end
