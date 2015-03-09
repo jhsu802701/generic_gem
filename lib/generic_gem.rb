@@ -29,6 +29,10 @@ module GenericGem
     puts "Filling in your name as the owner of the copyright in LICENSE.txt"
     puts "Your name: #{your_name}"
     StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/LICENSE.txt")
+
+    puts "********************************"
+    puts "Revising the initial rspec tests"
+    StringInFile.replace("expect(false).to eq(true)", "expect(true).to eq(true)", "#{subdir_main}/spec/#{gem_name}_spec.rb")
     
   end
 end

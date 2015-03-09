@@ -27,13 +27,17 @@ describe GenericGem do
       expect(StringInFile.present("Contributor Code of Conduct", "tmp/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
-    # Check for MIT license
     it "The MIT license is present and includes your name in the copyright" do
       expect(StringInFile.present("James Bond", "tmp/LICENSE.txt")).to eq(true)
       expect(StringInFile.present("TODO: Write your name", "tmp/LICENSE.txt")).to eq(false)
     end
-    # Check for initial rspec tests
-    # Check that initial version number is 0.0.0
+
+    it "The initial rspec tests are present and expect true == true" do
+      expect(StringInFile.present("require 'tmp'", "tmp/spec/spec_helper.rb")).to eq(true)
+      expect(StringInFile.present("expect(false).to eq(true)", "tmp/spec/tmp_spec.rb")).to eq(false)
+      expect(StringInFile.present("expect(true).to eq(true)", "tmp/spec/tmp_spec.rb")).to eq(true)
+    end
+  
     # Check that bin/setup and bin/console are executable
     # Check the gem_test.sh script
     # Check the gem_console.sh script
