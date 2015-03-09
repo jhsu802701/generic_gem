@@ -18,19 +18,28 @@ chmod +x bin/setup
 chmod +x bin/console
 
 4.  Add gem_test file
-echo "#!/bin/bash" > gem_test
-echo "" >> gem_test
-echo "# Run this script to test this gem." >> gem_test
-echo "bin/setup" >> gem_test
-echo "rake" >> gem_test
-chmod +x gem_test
+echo "#!/bin/bash" > gem_test.sh
+echo "" >> gem_test.sh
+echo "# Run this script to test this gem." >> gem_test.sh
+echo "bin/setup" >> gem_test.sh
+echo "rake" >> gem_test.sh
+chmod +x gem_test.sh
 
 5.  Add gem_console file
 
-echo "#!/bin/bash" > gem_console
-echo "" >> gem_console
-echo "# Run this script to test this gem in an irb shell." >> gem_console
-echo "bin/console" >> gem_console
-chmod +x gem_console
+echo "#!/bin/bash" > gem_console.sh
+echo "" >> gem_console.sh
+echo "# Run this script to test this gem in an irb shell." >> gem_console.sh
+echo "bin/console" >> gem_console.sh
+chmod +x gem_console.sh
 
 6.  gemspec: Add rspec to development dependency list
+
+7.  Rakefile:
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new
+
+task :default => :spec
+task :test => :spec
