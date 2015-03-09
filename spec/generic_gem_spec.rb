@@ -5,14 +5,23 @@ describe GenericGem do
     expect(GenericGem::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'true == true' do
+    expect(true).to eq(true)
   end
   
   describe 'process' do
+    require 'string_in_file'
+    GenericGem.create("tmp")
+    #system("rm $HOME/.bundle/config")
     # Create new gem in tmp directory
     # Make the changes central to this generic_gem Ruby gem
     # Check $HOME/.bundle/config settings
+    it "Bundler has the proper configuration settings" do
+      puts "#{ENV['HOME']}/.bundle/config"
+      expect(StringInFile.present("BUNDLE_GEM__COC: true", "#{ENV['HOME']}/.bundle/config")).to eq(true)
+      expect(StringInFile.present("BUNDLE_GEM__MIT: true", "#{ENV['HOME']}/.bundle/config")).to eq(true)
+      expect(StringInFile.present("BUNDLE_GEM__TEST", "#{ENV['HOME']}/.bundle/config")).to eq(true)
+    end
     # Check for code of conduct
     # Check for MIT license
     # Check for initial rspec tests

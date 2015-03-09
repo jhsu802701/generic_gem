@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+---
+BUNDLE_GEM__COC: true
+BUNDLE_GEM__MIT: true
+BUNDLE_GEM__TEST: rspec
