@@ -11,6 +11,7 @@ module GenericGem
     puts "Setting up #{ENV['HOME']}/.bundle/config"
     puts "Includes the Code of Conduct (CODE_OF_CONDUCT.md file) and MIT license (LICENSE.txt file)"
     puts "Using rspec testing"
+    system("mkdir #{ENV['HOME']}/.bundle")
     system("cp #{dir_main}/lib/files_to_add/config #{ENV['HOME']}/.bundle/config")
       
     t1 = Thread.new {  
