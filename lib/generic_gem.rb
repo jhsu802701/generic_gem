@@ -79,5 +79,38 @@ module GenericGem
       system("mv #{path_new} #{path_old}")
       }
     t1.join
+    
+    puts "***************************"
+    puts "Updating the README.md file"
+    t1 = Thread.new {  
+      path_old = "#{subdir_main}/README.md"
+      path_new = "#{subdir_main}/README-new.md"
+      file_w = open(path_new, 'w')
+      section_devel = false
+      File.readlines(path_old).each do |line|
+        if line.include? '## Contributing'
+          section_devel = false
+          file_w.write(line)
+        elsif line.include? '## Development'
+          section_devel = true
+          file_w.write(line)
+          file_w.write("\n")
+          str_test = "Testing this gem: Enter `sh gem_test.sh`.  "
+          str_test += "This should work in a fresh Ruby on Rails installation."
+          str_test += "\n"
+          file_w.write(str_test)
+          str_console = "Running this gem in irb: Enter `sh gem_console.sh`.\n\n"
+          file_w.write(str_console)
+        elsif section_devel == true
+          # Do NOT include in new README file
+        else
+          file_w.write(line)
+        end
+      end
+      file_w.close
+      system("rm #{path_old}")
+      system("mv #{path_new} #{path_old}")
+      }
+    t1.join
   end
 end
