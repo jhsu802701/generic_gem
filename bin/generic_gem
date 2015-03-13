@@ -1,0 +1,12 @@
+#!/bin/bash
+
+require 'generic_gem'
+
+gem1 = GenericApp.new
+puts "***********************"
+puts "Welcome to Generic Gem!"
+puts
+puts "DEFAULT VALUE: "
+puts "Enter the directory name you wish to use for your generic app:"
+subdir_name = gets.chomp
+gem1.create(subdir_name)

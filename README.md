@@ -1,8 +1,28 @@
 # GenericGem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/generic_gem`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to GenericGem!  The purpose of this gem is to streamline the process of creating a gem with Bundler.  
 
-TODO: Delete this and the text above, and describe your gem
+## What's the point?
+I HATE having to jump through hoops just to take care of the generic details that are necessary for all or most Ruby gems.  Every time I have created a Ruby gem, there were numerous details that I had to remember to do.  The generic aspects of a gem are fully automated so that you have more time available to work on the capabilities that make your Ruby gem unique.
+
+## Prerequisites for Understanding GenericGem
+You should be familiar with the process of building a Ruby gem.  Some 
+good resources are:
+
+    https://quickleft.com/blog/engineering-lunch-series-step-by-step-guide-to-building-your-first-ruby-gem/
+    http://rakeroutes.com/blog/lets-write-a-gem-part-one/
+    http://rakeroutes.com/blog/lets-write-a-gem-part-two/
+    
+## How does GenericGem work?
+GenericGem uses the bundle command to begin the process of creating a gem.  Additionally, it adds a number of enhancements needed by all or most Ruby gems.  These changes are:
+
+* The Code of Conduct and MIT license are automatically included.  (It's easier to remove them than to remember to add them.)
+* Your name is automatically filled in as the copyright owner in the MIT license.
+* RSpec testing is automatically included and installed.  Your gem will pass the initial meaningless tests.
+* The version number is set to 0.0.0.
+* The bin/console and bin/setup script files are made executable.
+* The gem_test.sh script is added to the gem's root directory.  This is the 1-step test procedure that executes the bin/setup script (which includes the "bundle install" command) AND the command "rake".  Just enter the command "sh gem_test.sh" command to start the process.  It is 
+* 
 
 ## Installation
 
