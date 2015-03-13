@@ -1,12 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
 require 'generic_gem'
 
-gem1 = GenericApp.new
 puts "***********************"
 puts "Welcome to Generic Gem!"
 puts
-puts "DEFAULT VALUE: "
+puts "DEFAULT VALUE: tmp1"
 puts "Enter the directory name you wish to use for your generic app:"
 subdir_name = gets.chomp
-gem1.create(subdir_name)
+if subdir_name == ""
+  subdir_name = "tmp1"
+end
+puts
+puts "DEFAULT VALUE: Marie Curie"
+puts "Enter your name:"
+your_name = gets.chomp
+if your_name == ""
+  your_name = "Marie Curie"
+end
+
+GenericGem.create(subdir_name, your_name)
