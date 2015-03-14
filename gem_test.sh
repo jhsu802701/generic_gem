@@ -16,9 +16,10 @@ echo "*********************************"
 echo "****************************"
 echo "BEGIN RUNNING THE EXECUTABLE"
 rake install
+echo "Finished rake install"
 generic_gem
-#expect -nocase \"Enter the directory name\" {send \"tmp2\r\"; interact}
-#expect -nocase \"Enter your name\" {send \"Maya Angelou\r\"; interact}
+echo "Finished generic_gem"
+
 echo "FINISHED RUNNING THE EXECUTABLE"
 echo "*******************************"
 
