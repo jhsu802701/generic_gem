@@ -20,3 +20,4 @@ if your_name == ""
 end
 
 GenericGem.create(subdir_name, your_name)
+system("cd #{subdir_name} && sh gem_test.sh")
