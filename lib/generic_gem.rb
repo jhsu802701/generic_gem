@@ -3,6 +3,11 @@ require "string_in_file"
 
 module GenericGem
   def self.create (gem_name, your_name, your_email)
+    puts "**********************"
+    puts "Welcome to Generic Gem"
+    puts "GEM NAME: #{gem_name}"
+    puts "YOUR NAME: #{your_name}"
+    puts "YOUR EMAIL: #{your_email}"
     dir_main = File.expand_path("../../", __FILE__)
     subdir_main = gem_name
     
