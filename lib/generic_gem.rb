@@ -2,7 +2,7 @@ require "generic_gem/version"
 require "string_in_file"
 
 module GenericGem
-  def self.create (gem_name, your_name)
+  def self.create (gem_name, your_name, your_email)
     dir_main = File.expand_path("../../", __FILE__)
     subdir_main = gem_name
     
@@ -31,6 +31,18 @@ module GenericGem
     puts "Your name: #{your_name}"
     StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/LICENSE.txt")
     StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/#{gem_name}.gemspec")
+    
+    puts "****************************************************"
+    puts "Filling in your email address in #{gem_name}.gemspec"
+    StringInFile.replace("TODO: Write your email address", your_email, "#{subdir_main}/#{gem_name}.gemspec")
+    
+    puts "*****************************************************"
+    puts "Filling in the gem description in #{gem_name}.gemspec"
+    StringInFile.replace("TODO: Write a longer description or delete this line.", "GENERIC DESCRIPTION", "#{subdir_main}/#{gem_name}.gemspec")
+    
+    puts "*************************************************"
+    puts "Filling in the gem summary in #{gem_name}.gemspec"
+    StringInFile.replace("TODO: Write a short summary, because Rubygems requires one.", "GENERIC SUMMARY", "#{subdir_main}/#{gem_name}.gemspec")
 
     puts "********************************"
     puts "Revising the initial rspec tests"

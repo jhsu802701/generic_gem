@@ -12,7 +12,7 @@ describe GenericGem do
   describe 'process' do
     require 'string_in_file'
     system("rm -rf tmp")
-    GenericGem.create("tmp", "James Bond")
+    GenericGem.create("tmp", "James Bond", "jbond@example.com")
     it "Bundler has the proper configuration settings" do
       expect(StringInFile.present("BUNDLE_GEM__COC: true", "#{ENV['HOME']}/.bundle/config")).to eq(true)
       expect(StringInFile.present("BUNDLE_GEM__MIT: true", "#{ENV['HOME']}/.bundle/config")).to eq(true)
@@ -27,11 +27,25 @@ describe GenericGem do
       expect(StringInFile.present("Contributor Code of Conduct", "tmp/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
-    it "The MIT license is present and includes your name in the copyright and gemspec" do
+    it "Your name in the LICENSE.txt and gemspec files" do
       expect(StringInFile.present("James Bond", "tmp/LICENSE.txt")).to eq(true)
       expect(StringInFile.present("TODO: Write your name", "tmp/LICENSE.txt")).to eq(false)
       expect(StringInFile.present("TODO: Write your name", "tmp/tmp.gemspec")).to eq(false)
       expect(StringInFile.present("James Bond", "tmp/tmp.gemspec")).to eq(true)
+    end
+    
+    it "Your email address is in the gemspec file" do
+      expect(StringInFile.present("jbond@example.com", "tmp/tmp.gemspec")).to eq(true)
+    end
+    
+    it "A generic gem description should replace the default description in the gemspec file" do
+      expect(StringInFile.present("TODO: Write a longer description", "tmp/tmp.gemspec")).to eq(false)
+      expect(StringInFile.present("GENERIC DESCRIPTION", "tmp/tmp.gemspec")).to eq(true)
+    end
+    
+    it "A generic gem summary should replace the default summary in the gemspec file" do
+      expect(StringInFile.present("TODO: Write a short summary", "tmp/tmp.gemspec")).to eq(false)
+      expect(StringInFile.present("GENERIC SUMMARY", "tmp/tmp.gemspec")).to eq(true)
     end
 
     it "The initial rspec tests are present and expect true == true" do

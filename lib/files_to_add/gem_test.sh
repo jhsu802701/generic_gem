@@ -2,3 +2,4 @@
 
 bin/setup
 rake
+rake install

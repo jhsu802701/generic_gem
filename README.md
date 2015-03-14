@@ -17,7 +17,7 @@ You should be familiar with the process of building a Ruby gem.  Some good resou
 GenericGem uses the bundle command to begin the process of creating a gem.  Additionally, it adds a number of enhancements needed by all or most Ruby gems.  These changes are:
 
 * The Code of Conduct and MIT license are automatically included.  (It's easier to remove them than to remember to add them.)
-* Your name is automatically filled in as the copyright owner in the MIT license.
+* Your name is automatically filled in the file LICENSE.txt and in the gemspec file.
 * RSpec testing is automatically included and installed.  Your gem will pass the initial meaningless tests.
 * The version number is set to 0.0.0.
 * The bin/console and bin/setup script files are made executable.
