@@ -30,12 +30,6 @@ require 'generic_gem'
     your_email = "mcurie@example.com"
   end
 
-  puts subdir_name
-  puts your_name
-  puts your_email
-
-
-
 GenericGem.create(subdir_name, your_name, your_email)
 system("cd #{subdir_name} && sh gem_test.sh")
 
