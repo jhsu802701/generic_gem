@@ -113,5 +113,12 @@ module GenericGem
       system("mv #{path_new} #{path_old}")
       }
     t1.join
+    
+    puts "*******************************************************************************"
+    puts "Adding the suggestion of using a class or module to the lib/#{gem_name}.rb file"
+    open("#{subdir_main}/lib/#{gem_name}.rb", 'a') { |f|
+      f << "# Your new gem is a module by default.  You may wish to use a class instead."
+    }
+    
   end
 end

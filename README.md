@@ -6,12 +6,12 @@ Welcome to GenericGem!  The purpose of this gem is to streamline the process of 
 I HATE having to jump through hoops just to take care of the generic details that are necessary for all or most Ruby gems.  Every time I have created a Ruby gem, there were numerous details that I had to remember to do.  The generic aspects of a gem are fully automated so that you have more time available to work on the capabilities that make your Ruby gem unique.
 
 ## Prerequisites for Understanding GenericGem
-You should be familiar with the process of building a Ruby gem.  Some 
-good resources are:
+You should be familiar with the process of building a Ruby gem.  Some good resources are:
 
     https://quickleft.com/blog/engineering-lunch-series-step-by-step-guide-to-building-your-first-ruby-gem/
     http://rakeroutes.com/blog/lets-write-a-gem-part-one/
     http://rakeroutes.com/blog/lets-write-a-gem-part-two/
+    http://guides.rubygems.org/make-your-own-gem/
     
 ## How does GenericGem work?
 GenericGem uses the bundle command to begin the process of creating a gem.  Additionally, it adds a number of enhancements needed by all or most Ruby gems.  These changes are:

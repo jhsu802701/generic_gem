@@ -77,6 +77,10 @@ describe GenericGem do
       expect(StringInFile.present("gem_console.sh", "tmp/README.md")).to eq(true)
     end
     
+    it "Adds mention of class in main lib file" do
+      expect(StringInFile.present("class", "tmp/lib/tmp.rb")).to eq(true)
+    end
+    
   end
   
 end
