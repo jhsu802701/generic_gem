@@ -48,11 +48,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Just enter the command "generic_gem".  When prompted, provide the name of your new gem, your name, and your email address.  Your new gem will be automatically created AND tested.  The initial meaningless tests will pass.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+### Testing this gem
+
+After cloning this source code, cd your way into this directory and enter the command "sh gem_test.sh".
+
+### Installing this gem
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
