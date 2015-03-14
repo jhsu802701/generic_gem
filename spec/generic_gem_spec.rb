@@ -27,9 +27,11 @@ describe GenericGem do
       expect(StringInFile.present("Contributor Code of Conduct", "tmp/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
-    it "The MIT license is present and includes your name in the copyright" do
+    it "The MIT license is present and includes your name in the copyright and gemspec" do
       expect(StringInFile.present("James Bond", "tmp/LICENSE.txt")).to eq(true)
       expect(StringInFile.present("TODO: Write your name", "tmp/LICENSE.txt")).to eq(false)
+      expect(StringInFile.present("TODO: Write your name", "tmp/tmp.gemspec")).to eq(false)
+      expect(StringInFile.present("James Bond", "tmp/tmp.gemspec")).to eq(true)
     end
 
     it "The initial rspec tests are present and expect true == true" do
