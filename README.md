@@ -3,7 +3,7 @@
 Welcome to GenericGem!  The purpose of this gem is to streamline the process of creating a gem with Bundler.  
 
 ## What's the point?
-I HATE having to jump through hoops just to take care of the generic details that are necessary for all or most Ruby gems.  Every time I have created a Ruby gem, there were numerous details that I had to remember to do.  The generic aspects of a gem are fully automated so that you have more time available to work on the capabilities that make your Ruby gem unique.
+I HATE having to jump through hoops just to take care of the generic details that are necessary for all or most Ruby gems.  Every time I have created a Ruby gem, there were numerous details that I had to remember to do.  The generic aspects of a gem are fully automated to minimize the drudgery so that you have more time available to work on the capabilities that make your Ruby gem unique.
 
 ## Prerequisites for Understanding GenericGem
 You should be familiar with the process of building a Ruby gem.  Some good resources are:
@@ -18,11 +18,17 @@ GenericGem uses the bundle command to begin the process of creating a gem.  Addi
 
 * The Code of Conduct and MIT license are automatically included.  (It's easier to remove them than to remember to add them.)
 * Your name is automatically filled in the file LICENSE.txt and in the gemspec file.
+* The gem description in the gemspec file is "GENERIC DESCRIPTION" to enable the "rake install" command.
+* The gem summary in the gemspec file is "GENERIC SUMMARY" to enable the "rake install" command.
+* Your email address is automatically provided in the gemspec file.
 * RSpec testing is automatically included and installed.  Your gem will pass the initial meaningless tests.
 * The version number is set to 0.0.0.
 * The bin/console and bin/setup script files are made executable.
-* The gem_test.sh script is added to the gem's root directory.  This is the 1-step test procedure that executes the bin/setup script (which includes the "bundle install" command) AND the command "rake".  Just enter the command "sh gem_test.sh" command to start the process.  It is 
-* 
+* A working Rakefile is provided.
+* The gem_test.sh script is added to the gem's root directory.  This is the 1-step test procedure that executes the bin/setup script (which includes the "bundle install" command) AND the command "rake".  Just enter the command "sh gem_test.sh" command to start the process.  When you clone your gem's source code onto a machine with a fresh Ruby on Rails installation, running the gem_test.sh script should confirm that all of the details needed to make your gem work are complete.
+* The .gitignore file includes .DS_Store and the directories tmp and tmp*.
+* Instructions on using the gem_test.sh and gem_console.sh scripts are included in the README.md file.
+
 
 ## Installation
 
