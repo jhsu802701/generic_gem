@@ -1,5 +1,6 @@
 #!/bin/bash
 
+gem uninstall generic_gem
 bin/setup
 echo "*************************"
 echo "BEGIN TESTING generic_gem"

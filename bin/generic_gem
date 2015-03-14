@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-#require 'generic_gem'
-'''
+require 'generic_gem'
+
 
   puts "***********************"
   puts "Welcome to Generic Gem!"
@@ -36,6 +36,6 @@
 
 
 
-#GenericGem.create(subdir_name, your_name, your_email)
-#system("cd #{subdir_name} && sh gem_test.sh")
-'''
+GenericGem.create(subdir_name, your_name, your_email)
+system("cd #{subdir_name} && sh gem_test.sh")
+
