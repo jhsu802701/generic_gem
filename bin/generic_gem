@@ -1,20 +1,21 @@
 #!/usr/bin/env ruby
 
-require 'generic_gem'
+#require 'generic_gem'
+'''
 
   puts "***********************"
   puts "Welcome to Generic Gem!"
   puts
   puts "DEFAULT VALUE: tmp1"
   puts "Enter the directory name you wish to use for your generic app:"
-  subdir_name = gets.chomp
+  subdir_name = gets
   if subdir_name == ""
     subdir_name = "tmp1"
   end
   puts
   puts "DEFAULT VALUE: Marie Curie"
   puts "Enter your name:"
-  your_name = gets.chomp
+  your_name = gets
   puts your_name
   if your_name == ""
     your_name = "Marie Curie"
@@ -24,7 +25,7 @@ require 'generic_gem'
   puts
   puts "DEFAULT VALUE: mcurie@example.com"
   puts "Enter your email address:"
-  your_email = gets.chomp
+  your_email = gets
   if your_email == ""
     your_email = "mcurie@example.com"
   end
@@ -37,3 +38,4 @@ require 'generic_gem'
 
 #GenericGem.create(subdir_name, your_name, your_email)
 #system("cd #{subdir_name} && sh gem_test.sh")
+'''
