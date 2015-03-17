@@ -62,6 +62,13 @@ describe GenericGem do
     it "The gem_test.sh script is provided" do
       expect(StringInFile.present("bin/setup", "tmp/gem_test.sh")).to eq(true)
       expect(StringInFile.present("rake", "tmp/gem_test.sh")).to eq(true)
+      expect(StringInFile.present("gem uninstall tmp", "tmp/gem_test.sh")).to eq(true)
+    end
+    
+    it "The gem_install.sh script is provided" do
+      expect(StringInFile.present("bin/setup", "tmp/gem_install.sh")).to eq(true)
+      expect(StringInFile.present("rake install", "tmp/gem_install.sh")).to eq(true)
+      expect(StringInFile.present("gem uninstall tmp", "tmp/gem_install.sh")).to eq(true)
     end
 
     it "The gem_console.sh script is provided" do

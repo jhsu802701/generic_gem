@@ -60,6 +60,22 @@ module GenericGem
     puts "*****************************"
     puts "Adding the gem_test.sh script"
     system("cp #{dir_main}/lib/files_to_add/gem_test.sh #{subdir_main}")
+    
+    puts "*********************************************"
+    puts "Adding 'gem uninstall' command to gem_test.sh"
+    str_old = '#!/bin/bash'
+    str_new = '#!/bin/bash' + "\n\n" + "gem uninstall #{gem_name}"
+    StringInFile.replace(str_old, str_new, "#{subdir_main}/gem_test.sh")
+    
+    puts "********************************"
+    puts "Adding the gem_install.sh script"
+    system("cp #{dir_main}/lib/files_to_add/gem_install.sh #{subdir_main}")
+    
+    puts "************************************************"
+    puts "Adding 'gem uninstall' command to gem_install.sh"
+    str_old = '#!/bin/bash'
+    str_new = '#!/bin/bash' + "\n\n" + "gem uninstall #{gem_name}"
+    StringInFile.replace(str_old, str_new, "#{subdir_main}/gem_install.sh")
 
     puts "********************************"
     puts "Adding the gem_console.sh script"
@@ -136,6 +152,10 @@ module GenericGem
     open("#{subdir_main}/lib/#{gem_name}.rb", 'a') { |f|
       f << "# Your new gem is a module by default.  You may wish to use a class instead."
     }
+    
+    puts "********"
+    puts "git init"
+    system("cd #{subdir_main} && git init")
     
   end
 end
