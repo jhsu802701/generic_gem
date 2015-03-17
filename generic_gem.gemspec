@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jason Hsu"]
   spec.email         = ["rubyist@jasonhsu.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{GenericGem streamlines the process of starting a new Ruby gem.}
   spec.description   = %q{GenericGem executes the bundle command but fills in important but easily forgotten details.}
   spec.homepage      = "https://github.com/jhsu802701/generic_gem"
