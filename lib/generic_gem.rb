@@ -80,6 +80,12 @@ module GenericGem
     puts "********************************"
     puts "Adding the gem_console.sh script"
     system("cp #{dir_main}/lib/files_to_add/gem_console.sh #{subdir_main}")
+    
+    puts "************************************************"
+    puts "Adding 'gem uninstall' command to gem_console.sh"
+    str_old = '#!/bin/bash'
+    str_new = '#!/bin/bash' + "\n\n" + "gem uninstall #{gem_name}"
+    StringInFile.replace(str_old, str_new, "#{subdir_main}/gem_console.sh")
 
     puts "*******************"
     puts "Adding the Rakefile"

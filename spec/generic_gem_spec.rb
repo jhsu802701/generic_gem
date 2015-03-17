@@ -72,7 +72,9 @@ describe GenericGem do
     end
 
     it "The gem_console.sh script is provided" do
+      expect(StringInFile.present('bin/setup', "tmp/gem_console.sh")).to eq(true)
       expect(StringInFile.present('bin/console', "tmp/gem_console.sh")).to eq(true)
+      expect(StringInFile.present("gem uninstall tmp", "tmp/gem_console.sh")).to eq(true)
     end
 
     it "The Rakefile is provided" do
