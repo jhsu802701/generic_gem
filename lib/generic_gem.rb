@@ -153,9 +153,10 @@ module GenericGem
       f << "# Your new gem is a module by default.  You may wish to use a class instead."
     }
     
-    puts "********"
-    puts "git init"
+    puts "*********"
+    puts "Reset Git"
     system("cd #{subdir_main} && git init")
-    
+    system("cd #{subdir_main} && git add .")
+    system("cd #{subdir_main} && git commit -m 'Initial commit'")
   end
 end
