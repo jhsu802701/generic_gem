@@ -95,8 +95,9 @@ module GenericGem
     puts "Completing the .gitignore file"
     puts "Adding tmp* and .DS_Store"
     open("#{subdir_main}/.gitignore", 'a') { |f|
-      f << "tmp*"
-      f << ".DS_Store"
+      f << "\ntmp*"
+      f << "\n.DS_Store"
+      f << "\n*.gem"
     }
     
     puts "*********************************"

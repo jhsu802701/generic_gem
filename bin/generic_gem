@@ -7,20 +7,19 @@ require 'generic_gem'
   puts "Welcome to Generic Gem!"
   puts
   puts "DEFAULT VALUE: tmp1"
-  puts "Enter the directory name you wish to use for your generic app:"
+  puts "Enter the name of the gem you wish to create:"
   subdir_name = gets.chomp
   if subdir_name == ""
     subdir_name = "tmp1"
   end
+  
   puts
   puts "DEFAULT VALUE: Marie Curie"
   puts "Enter your name:"
   your_name = gets.chomp
-  puts your_name
   if your_name == ""
     your_name = "Marie Curie"
   end
-  puts your_name
 
   puts
   puts "DEFAULT VALUE: mcurie@example.com"
@@ -33,3 +32,13 @@ require 'generic_gem'
 GenericGem.create(subdir_name, your_name, your_email)
 system("cd #{subdir_name} && sh gem_test.sh")
 
+puts
+puts "******************************"
+puts "Your new gem is ready to roll."
+puts "GEM NAME: #{subdir_name}" 
+puts "YOUR NAME: #{your_name}"
+puts "YOUR EMAIL: #{your_email}"
+puts "Please remember to fill in the rest of your #{subdir_name}.gemspec file."
+puts "You still need to provide a gem summary, a gem description, and a homepage."
+puts "You also need to remove the metadata section."
+puts
