@@ -4,13 +4,22 @@ gem uninstall generic_gem
 bin/setup
 echo "*************************"
 echo "BEGIN TESTING generic_gem"
+echo
+echo '-------'
+echo 'rubocop'
+rubocop
+echo
+echo '----'
+echo 'rake'
 rake
 echo "FINISHED TESTING generic_gem"
 echo "****************************"
 
 echo "******************************"
 echo "BEGIN TESTING THE tmp RUBY GEM"
-cd tmp && sh gem_test.sh
+DIR_PARENT="${PWD%/*}"
+DIR_TMP="$DIR_PARENT/tmp"
+cd $DIR_TMP && sh gem_test.sh
 echo "FINISHED TESTING THE tmp RUBY GEM"
 echo "*********************************"
 

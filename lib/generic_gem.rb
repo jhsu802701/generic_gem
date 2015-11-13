@@ -99,28 +99,7 @@ module GenericGem
       f << "\n.DS_Store"
       f << "\n*.gem"
     }
-    
-    puts "*********************************"
-    puts "Adding rspec to the .gemspec file"
-    t1 = Thread.new {  
-      path_old = "#{subdir_main}/#{gem_name}.gemspec"
-      path_new = "#{subdir_main}/#{gem_name}_new.gemspec"
-      file_w = open(path_new, 'w')
-      File.readlines(path_old).each do |line|
-        if line.include? 'spec.add_development_dependency "rake"'
-          file_w.write(line)
-          file_w.write('  spec.add_development_dependency "rspec"')
-          file_w.write("\n")
-        else
-          file_w.write(line)
-        end
-      end
-      file_w.close
-      system("rm #{path_old}")
-      system("mv #{path_new} #{path_old}")
-      }
-    t1.join
-    
+
     puts "***************************"
     puts "Updating the README.md file"
     t1 = Thread.new {  
