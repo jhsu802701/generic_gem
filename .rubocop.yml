@@ -1,3 +1,4 @@
 Metrics/LineLength:
   Exclude:
+    - bin/generic_gem
     - spec/generic_gem_spec.rb
