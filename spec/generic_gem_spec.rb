@@ -78,11 +78,11 @@ describe GenericGem do
     end
 
     it 'The Rakefile is provided' do
-      expect(StringInFile.present('require "bundler/gem_tasks"', 'tmp/Rakefile')).to eq(true)
-      expect(StringInFile.present('require "rspec/core/rake_task"', 'tmp/Rakefile')).to eq(true)
+      expect(StringInFile.present("require 'bundler/gem_tasks'", 'tmp/Rakefile')).to eq(true)
+      expect(StringInFile.present("require 'rspec/core/rake_task'", 'tmp/Rakefile')).to eq(true)
       expect(StringInFile.present('RSpec::Core::RakeTask.new', 'tmp/Rakefile')).to eq(true)
-      expect(StringInFile.present('task :default => :spec', 'tmp/Rakefile')).to eq(true)
-      expect(StringInFile.present('task :test => :spec', 'tmp/Rakefile')).to eq(true)
+      expect(StringInFile.present('task default: :spec', 'tmp/Rakefile')).to eq(true)
+      expect(StringInFile.present('task test: :spec', 'tmp/Rakefile')).to eq(true)
     end
 
     it 'The .gitignore file includes tmp, tmp*, and ,DS_Store' do
