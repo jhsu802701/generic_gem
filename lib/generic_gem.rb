@@ -95,9 +95,9 @@ module GenericGem
     puts 'Completing the .gitignore file'
     puts 'Adding tmp* and .DS_Store'
     open("#{subdir_main}/.gitignore", 'a') { |f|
-      f << "\ntmp*"
-      f << "\n.DS_Store"
-      f << "\n*.gem"
+      f << '\ntmp*'
+      f << '\n.DS_Store'
+      f << '\n*.gem'
     }
 
     puts '***************************'
@@ -114,17 +114,17 @@ module GenericGem
         elsif line.include? '## Development'
           section_devel = true
           file_w.write(line)
-          file_w.write("\n\n")
-          str_test = "### Testing this gem\n\n"
-          str_test += "Enter `sh gem_test.sh`.\n\n"
+          file_w.write('\n\n')
+          str_test = '### Testing this gem\n\n'
+          str_test += 'Enter `sh gem_test.sh`.\n\n'
           file_w.write(str_test)
 
-          str_console = "### Running this gem in irb\n\n"
-          str_console += "Enter `sh gem_console.sh`.\n\n"
+          str_console = '### Running this gem in irb\n\n'
+          str_console += 'Enter `sh gem_console.sh`.\n\n'
           file_w.write(str_console)
 
-          str_install = "### Installing this gem\n\n"
-          str_install += "Enter `sh gem_install.sh`.\n\n"
+          str_install = '### Installing this gem\n\n'
+          str_install += 'Enter `sh gem_install.sh`.\n\n'
           file_w.write(str_install)
         elsif section_devel == true
           # Do NOT include in new README file
