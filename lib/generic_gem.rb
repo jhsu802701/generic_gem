@@ -53,6 +53,10 @@ module GenericGem
     puts "Filling in the gem summary in #{gem_name}.gemspec"
     StringInFile.replace('TODO: Write a short summary, because Rubygems requires one.', 'GENERIC SUMMARY', "#{subdir_main}/#{gem_name}.gemspec")
 
+    puts '***************************************************'
+    puts "Updating #{gem_name}.gemspec for RuboCop compliance"
+    ReplaceQuotes.update("#{subdir_main}/#{gem_name}.gemspec")
+
     puts '********************************'
     puts 'Revising the initial rspec tests'
     StringInFile.replace('expect(false).to eq(true)', 'expect(true).to eq(true)', "#{subdir_main}/spec/#{gem_name}_spec.rb")

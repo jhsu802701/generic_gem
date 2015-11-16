@@ -97,7 +97,7 @@ describe GenericGem do
     end
 
     it 'The .gemspec file includes rspec as a development dependency' do
-      expect(StringInFile.present('spec.add_development_dependency "rspec"', "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'rspec'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
     end
 
     it 'Added instructions on gem_test.sh and gem_console.sh to README.md' do
