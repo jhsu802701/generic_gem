@@ -32,6 +32,8 @@ module GenericGem
     puts '**********************'
     puts 'Initial version: 0.0.0'
     StringInFile.replace('0.1.0', '0.0.0', "#{subdir_main}/lib/#{gem_name}/version.rb")
+    ReplaceQuotes.update("#{subdir_main}/lib/#{gem_name}/version.rb")
+    StringInFile.replace('module', "#\nmodule", "#{subdir_main}/lib/#{gem_name}/version.rb")
 
     puts '*****************************************************************'
     puts "Filling in your name in LICENSE.txt and #{gem_name}.gemspec"
