@@ -1,5 +1,6 @@
 require 'generic_gem/version'
 require 'string_in_file'
+require 'replace_quotes'
 
 #
 module GenericGem
@@ -53,6 +54,10 @@ module GenericGem
     puts '********************************'
     puts 'Revising the initial rspec tests'
     StringInFile.replace('expect(false).to eq(true)', 'expect(true).to eq(true)', "#{subdir_main}/spec/#{gem_name}_spec.rb")
+
+    puts '*******************************************'
+    puts 'Updating bin/console to comply with Rubocop'
+    ReplaceQuotes.update("#{subdir_main}/bin/console")
 
     puts '*****************************************************'
     puts 'Making the bin/console and bin/setup files executable'
@@ -139,10 +144,15 @@ module GenericGem
     end
     t1.join
 
+    puts '*****************************************************************'
+    puts "Updating #{subdir_main}/lib/#{gem_name}.rb to comply with RuboCop"
+    ReplaceQuotes.update("#{subdir_main}/lib/#{gem_name}.rb")
+    StringInFile.replace('module', "#\nmodule", "#{subdir_main}/lib/#{gem_name}.rb")
+
     puts '*******************************************************************************'
     puts "Adding the suggestion of using a class or module to the lib/#{gem_name}.rb file"
     open("#{subdir_main}/lib/#{gem_name}.rb", 'a') do |f|
-      f << '# Your new gem is a module by default.  You may wish to use a class instead.'
+      f << "# Your new gem is a module by default.  You may wish to use a class instead.\n"
     end
 
     puts '*********'
