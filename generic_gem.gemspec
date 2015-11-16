@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jason Hsu']
   spec.email         = ['rubyist@jasonhsu.com']
 
-  spec.summary       = %q{GenericGem streamlines the process of starting a new Ruby gem.}
-  spec.description   = %q{GenericGem executes the bundle command but fills in important but easily forgotten details.}
+  spec.summary       = 'GenericGem streamlines the process of starting a new Ruby gem.'
+  spec.description   = 'GenericGem executes the bundle command but fills in important but easily forgotten details.'
   spec.homepage      = 'https://github.com/jhsu802701/generic_gem'
   spec.license       = 'MIT'
 

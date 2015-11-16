@@ -1,8 +1,9 @@
 require 'generic_gem/version'
 require 'string_in_file'
 
+#
 module GenericGem
-  def self.create (gem_name, your_name, your_email)
+  def self.create(gem_name, your_name, your_email)
     puts '**********************'
     puts 'Welcome to Generic Gem'
     puts "GEM NAME: #{gem_name}"
@@ -19,12 +20,12 @@ module GenericGem
     system("mkdir -p #{ENV['HOME']}/.bundle")
     system("cp #{dir_main}/lib/files_to_add/config #{ENV['HOME']}/.bundle/config")
 
-    t1 = Thread.new {  
+    t1 = Thread.new do
       puts '********************'
       puts 'Creating the new gem'
       puts "bundle gem #{gem_name}"
-      system("bundle gem #{gem_name}")  
-      }
+      system("bundle gem #{gem_name}")
+    end
     t1.join
 
     puts '**********************'
@@ -34,24 +35,24 @@ module GenericGem
     puts '*****************************************************************'
     puts "Filling in your name in LICENSE.txt and #{gem_name}.gemspec"
     puts "Your name: #{your_name}"
-    StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/LICENSE.txt")
-    StringInFile.replace("TODO: Write your name", your_name, "#{subdir_main}/#{gem_name}.gemspec")
+    StringInFile.replace('TODO: Write your name', your_name, "#{subdir_main}/LICENSE.txt")
+    StringInFile.replace('TODO: Write your name', your_name, "#{subdir_main}/#{gem_name}.gemspec")
 
     puts '****************************************************'
     puts "Filling in your email address in #{gem_name}.gemspec"
-    StringInFile.replace("TODO: Write your email address", your_email, "#{subdir_main}/#{gem_name}.gemspec")
+    StringInFile.replace('TODO: Write your email address', your_email, "#{subdir_main}/#{gem_name}.gemspec")
 
     puts '*****************************************************'
     puts "Filling in the gem description in #{gem_name}.gemspec"
-    StringInFile.replace("TODO: Write a longer description or delete this line.", "GENERIC DESCRIPTION", "#{subdir_main}/#{gem_name}.gemspec")
+    StringInFile.replace('TODO: Write a longer description or delete this line.', 'GENERIC DESCRIPTION', "#{subdir_main}/#{gem_name}.gemspec")
 
     puts '*************************************************'
     puts "Filling in the gem summary in #{gem_name}.gemspec"
-    StringInFile.replace("TODO: Write a short summary, because Rubygems requires one.", "GENERIC SUMMARY", "#{subdir_main}/#{gem_name}.gemspec")
+    StringInFile.replace('TODO: Write a short summary, because Rubygems requires one.', 'GENERIC SUMMARY', "#{subdir_main}/#{gem_name}.gemspec")
 
     puts '********************************'
     puts 'Revising the initial rspec tests'
-    StringInFile.replace("expect(false).to eq(true)", "expect(true).to eq(true)", "#{subdir_main}/spec/#{gem_name}_spec.rb")
+    StringInFile.replace('expect(false).to eq(true)', 'expect(true).to eq(true)', "#{subdir_main}/spec/#{gem_name}_spec.rb")
 
     puts '*****************************************************'
     puts 'Making the bin/console and bin/setup files executable'
@@ -94,15 +95,15 @@ module GenericGem
     puts '******************************'
     puts 'Completing the .gitignore file'
     puts 'Adding tmp* and .DS_Store'
-    open("#{subdir_main}/.gitignore", 'a') { |f|
+    open("#{subdir_main}/.gitignore", 'a') do |f|
       f << '\ntmp*'
       f << '\n.DS_Store'
       f << '\n*.gem'
-    }
+    end
 
     puts '***************************'
     puts 'Updating the README.md file'
-    t1 = Thread.new {  
+    t1 = Thread.new do
       path_old = "#{subdir_main}/README.md"
       path_new = "#{subdir_main}/README-new.md"
       file_w = open(path_new, 'w')
@@ -135,14 +136,14 @@ module GenericGem
       file_w.close
       system("rm #{path_old}")
       system("mv #{path_new} #{path_old}")
-      }
+    end
     t1.join
 
     puts '*******************************************************************************'
     puts "Adding the suggestion of using a class or module to the lib/#{gem_name}.rb file"
-    open("#{subdir_main}/lib/#{gem_name}.rb", 'a') { |f|
+    open("#{subdir_main}/lib/#{gem_name}.rb", 'a') do |f|
       f << '# Your new gem is a module by default.  You may wish to use a class instead.'
-    }
+    end
 
     puts '*********'
     puts 'Reset Git'

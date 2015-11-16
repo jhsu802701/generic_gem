@@ -1,4 +1,18 @@
+Metrics/AbcSize:
+  Exclude:
+    - lib/generic_gem.rb
+
 Metrics/LineLength:
   Exclude:
     - bin/generic_gem
+    - generic_gem.gemspec
+    - lib/generic_gem.rb
     - spec/generic_gem_spec.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/generic_gem.rb
+    
+Metrics/ModuleLength:
+  Exclude:
+    - lib/generic_gem.rb
