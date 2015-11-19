@@ -148,8 +148,18 @@ module GenericGem
     puts '---------------------------'
     puts 'Updating the README.md file'
     t1 = Thread.new do
-      path_old = "#{gem_name}/README.md"
-      path_new = "#{gem_name}/README-new.md"
+      file_w = open("#{gem_name}/README.md", 'a')
+      file_w.write("## Bash Scripts\n")
+      file_w.write("### Testing this gem\n")
+      file_w.write("After you download this source code, enter `sh gem_test.sh` to set up and test this gem.\n\n")
+      file_w.write("### Running this gem in irb\n")
+      file_w.write("Enter `sh gem_console.sh`.\n\n")
+      file_w.write("### Installing this gem\n")
+      file_w.write("Enter `sh gem_install.sh`.\n")
+      file_w.close
+      # path_old = "#{gem_name}/README.md"
+      # path_new = "#{gem_name}/README-new.md"
+      """
       file_w = open(path_new, 'w')
       section_devel = false
       File.readlines(path_old).each do |line|
@@ -178,8 +188,9 @@ module GenericGem
         end
       end
       file_w.close
-      system("rm #{path_old}")
-      system("mv #{path_new} #{path_old}")
+      """
+      # system("rm #{path_old}")
+      # system("mv #{path_new} #{path_old}")
     end
     t1.join
   end

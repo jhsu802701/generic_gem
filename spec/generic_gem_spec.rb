@@ -103,6 +103,11 @@ describe GenericGem do
     it 'Added instructions on gem_test.sh and gem_console.sh to README.md' do
       expect(StringInFile.present('gem_test.sh', "#{dir_tmp}/README.md")).to eq(true)
       expect(StringInFile.present('gem_console.sh', "#{dir_tmp}/README.md")).to eq(true)
+      expect(StringInFile.present('## Contributing', "#{dir_tmp}/README.md")).to eq(true)
+      expect(StringInFile.present('## Development', "#{dir_tmp}/README.md")).to eq(true)
+      expect(StringInFile.present('### Testing this gem', "#{dir_tmp}/README.md")).to eq(true)
+      expect(StringInFile.present('### Running this gem in irb', "#{dir_tmp}/README.md")).to eq(true)
+      expect(StringInFile.present('### Installing this gem', "#{dir_tmp}/README.md")).to eq(true)
     end
 
     it 'Adds mention of class in main lib file' do
