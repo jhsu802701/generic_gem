@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# uninstall
 bin/setup
 echo '-------'
 echo 'rubocop'
