@@ -157,40 +157,6 @@ module GenericGem
       file_w.write("### Installing this gem\n")
       file_w.write("Enter `sh gem_install.sh`.\n")
       file_w.close
-      # path_old = "#{gem_name}/README.md"
-      # path_new = "#{gem_name}/README-new.md"
-      """
-      file_w = open(path_new, 'w')
-      section_devel = false
-      File.readlines(path_old).each do |line|
-        if line.include? '## Contributing'
-          section_devel = false
-          file_w.write(line)
-        elsif line.include? '## Development'
-          section_devel = true
-          file_w.write(line)
-          file_w.write('\n\n')
-          str_test = '### Testing this gem\n\n'
-          str_test += 'Enter `sh gem_test.sh`.\n\n'
-          file_w.write(str_test)
-
-          str_console = '### Running this gem in irb\n\n'
-          str_console += 'Enter `sh gem_console.sh`.\n\n'
-          file_w.write(str_console)
-
-          str_install = '### Installing this gem\n\n'
-          str_install += 'Enter `sh gem_install.sh`.\n\n'
-          file_w.write(str_install)
-        elsif section_devel == true
-          # Do NOT include in new README file
-        else
-          file_w.write(line)
-        end
-      end
-      file_w.close
-      """
-      # system("rm #{path_old}")
-      # system("mv #{path_new} #{path_old}")
     end
     t1.join
   end
