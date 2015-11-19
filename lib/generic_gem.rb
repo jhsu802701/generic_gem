@@ -55,7 +55,11 @@ module GenericGem
 
     puts '***************************************************'
     puts "Updating #{gem_name}.gemspec for RuboCop compliance"
-    ReplaceQuotes.update("#{subdir_main}/#{gem_name}.gemspec")
+    t1 = Thread.new do
+      ReplaceQuotes.update("#{subdir_main}/#{gem_name}.gemspec")
+    end
+    t1.join
+    StringInFile.replace("'\\x0'", '"\\x0"', "#{subdir_main}/#{gem_name}.gemspec")
 
     puts '********************************'
     puts 'Revising the initial rspec tests'
