@@ -1,5 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/generic_gem.svg)](https://badge.fury.io/rb/generic_gem)
 [![Dependency Status](https://gemnasium.com/jhsu802701/generic_gem.svg)](https://gemnasium.com/jhsu802701/generic_gem)
+[![Build Status](https://travis-ci.org/jhsu802701/generic_gem.svg?branch=master)](https://travis-ci.org/jhsu802701/generic_gem)
 
 # GenericGem
 
