@@ -2,6 +2,7 @@
 [![Dependency Status](https://gemnasium.com/jhsu802701/generic_gem.svg)](https://gemnasium.com/jhsu802701/generic_gem)
 [![Build Status](https://travis-ci.org/jhsu802701/generic_gem.svg?branch=master)](https://travis-ci.org/jhsu802701/generic_gem)
 [![Code Climate](https://codeclimate.com/github/jhsu802701/generic_gem/badges/gpa.svg)](https://codeclimate.com/github/jhsu802701/generic_gem)
+[![Test Coverage](https://codeclimate.com/github/jhsu802701/generic_gem/badges/coverage.svg)](https://codeclimate.com/github/jhsu802701/generic_gem/coverage)
 
 # GenericGem
 
