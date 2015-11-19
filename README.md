@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/generic_gem.svg)](https://badge.fury.io/rb/generic_gem)
+
 # GenericGem
 
 Welcome to GenericGem!  The purpose of this gem is to streamline the process of creating a gem with Bundler.  
