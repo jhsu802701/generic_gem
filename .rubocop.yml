@@ -16,3 +16,7 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Exclude:
     - lib/generic_gem.rb
+
+AllCops:
+  Exclude:
+    - tmp/**/*
