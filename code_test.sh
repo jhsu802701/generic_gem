@@ -14,14 +14,19 @@ bin/setup >/dev/null
 echo
 echo '-------'
 echo 'rubocop'
-rubocop 2>&1 | tee $DIR_GENERIC_GEM/log/main-rubocop.txt
+rubocop
 
 echo
 echo '-----------'
 echo 'sandi_meter'
-sandi_meter 2>&1 | tee $DIR_GENERIC_GEM/log/main-sandi.txt
+sandi_meter
 
 echo
 echo '------------'
 echo 'bundle-audit'
-bundle-audit 2>&1 | tee $DIR_GENERIC_GEM/log/main-bundle-audit.txt
+bundle-audit
+
+echo '----------'
+echo 'gemsurance'
+gemsurance
+echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
