@@ -16,7 +16,7 @@ echo "BEGIN TESTING generic_gem"
 
 echo '----'
 echo 'rake'
-rake 2>&1 | tee $DIR_GENERIC_GEM/log/main.txt
+rake
 
 echo "FINISHED TESTING generic_gem"
 echo "****************************"
