@@ -35,4 +35,4 @@ echo 'The Gemsurance Report is in gemsurance_report.html in the root directory.'
 echo '--------------------------------------------------------------------'
 echo 'bundle viz --file=diagram-gems --format=svg --requirements --version'
 bundle viz --file=diagram-gems --format=svg --requirements --version
-echo 'The gem dependency diagram is in the diagram-gems.svg file.'
+echo 'The gem dependency diagram is in the diagram-gems.svg file in the root directory.'
