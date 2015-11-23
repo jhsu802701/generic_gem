@@ -84,10 +84,15 @@ describe GenericGem do
 
     it 'The code_test.sh script is provided' do
       expect(StringInFile.present('bin/setup', "#{dir_tmp}/code_test.sh")).to eq(true)
-      expect(StringInFile.present('gem uninstall tmp', "#{dir_tmp}/code_test.sh")).to eq(true)
       expect(StringInFile.present('rubocop', "#{dir_tmp}/code_test.sh")).to eq(true)
       expect(StringInFile.present('gemsurance', "#{dir_tmp}/code_test.sh")).to eq(true)
       expect(StringInFile.present('bundle viz', "#{dir_tmp}/code_test.sh")).to eq(true)
+    end
+
+    it 'The all.sh script is provided' do
+      expect(StringInFile.present('sh gem_test.sh', "#{dir_tmp}/all.sh")).to eq(true)
+      expect(StringInFile.present('sh code_test.sh', "#{dir_tmp}/all.sh")).to eq(true)
+      expect(StringInFile.present('sh gem_install.sh', "#{dir_tmp}/all.sh")).to eq(true)
     end
 
     it 'The Rakefile is provided' do
