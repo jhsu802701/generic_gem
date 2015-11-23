@@ -82,6 +82,14 @@ describe GenericGem do
       expect(StringInFile.present('gem uninstall tmp', "#{dir_tmp}/gem_console.sh")).to eq(true)
     end
 
+    it 'The code_test.sh script is provided' do
+      expect(StringInFile.present('bin/setup', "#{dir_tmp}/code_test.sh")).to eq(true)
+      expect(StringInFile.present('gem uninstall tmp', "#{dir_tmp}/code_test.sh")).to eq(true)
+      expect(StringInFile.present('rubocop', "#{dir_tmp}/code_test.sh")).to eq(true)
+      expect(StringInFile.present('gemsurance', "#{dir_tmp}/code_test.sh")).to eq(true)
+      expect(StringInFile.present('bundle viz', "#{dir_tmp}/code_test.sh")).to eq(true)
+    end
+
     it 'The Rakefile is provided' do
       expect(StringInFile.present("require 'bundler/gem_tasks'", "#{dir_tmp}/Rakefile")).to eq(true)
       expect(StringInFile.present("require 'rspec/core/rake_task'", "#{dir_tmp}/Rakefile")).to eq(true)
