@@ -67,5 +67,8 @@ echo $FILE_LOG_TMP_CODE
 echo $FILE_LOG_MAIN_INSTALL
 echo $FILE_LOG_TMP_INSTALL
 echo
+echo "Gemsurance Report: $DIR_GENERIC_GEM/log/gemsurance_report.html"
+echo "Gem dependency diagram: $DIR_GENERIC_GEM/log/diagram-gems.svg"
+echo
 echo 'If all went well, there are no error messages and no failed tests.'
 echo
