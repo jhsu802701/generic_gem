@@ -6,8 +6,6 @@ echo '--------------'
 echo 'bundle install'
 bin/setup >/dev/null
 
-echo "****************************"
-echo "BEGIN INSTALLING generic_gem"
+echo '------------'
+echo 'rake install'
 rake install
-echo "FINISHED INSTALLING generic_gem"
-echo "*******************************"

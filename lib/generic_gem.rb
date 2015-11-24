@@ -21,6 +21,7 @@ module GenericGem
     update_tests(gem_name)
     update_bin_scripts(gem_name)
     add_rakefile(gem_name)
+    add_readme_todo(gem_name)
     add_bash_scripts(gem_name)
     update_gitignore(gem_name)
     update_readme(gem_name)
@@ -117,6 +118,12 @@ module GenericGem
     system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/Rakefile #{gem_name}")
   end
 
+  def self.add_readme_todo(gem_name)
+    puts '--------------------------------'
+    puts 'Adding the README-to_do.txt file'
+    system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/README-to_do.txt #{gem_name}")
+  end
+
   def self.add_bash_scripts(gem_name)
     puts '-------------------'
     puts 'Adding Bash scripts'
@@ -152,10 +159,14 @@ module GenericGem
       file_w.write("## Bash Scripts\n")
       file_w.write("### Testing this gem\n")
       file_w.write("After you download this source code, enter `sh gem_test.sh` to set up and test this gem.\n\n")
+      file_w.write("### Testing this gem's source code\n")
+      file_w.write("Enter `sh code_test.sh` to test the quality of this gem's source code.\n")
       file_w.write("### Running this gem in irb\n")
       file_w.write("Enter `sh gem_console.sh`.\n\n")
       file_w.write("### Installing this gem\n")
       file_w.write("Enter `sh gem_install.sh`.\n")
+      file_w.write("### Testing the gem, source code, and installation process\n")
+      file_w.write("Enter `sh all.sh` to run the gem_test.sh, code_test.sh, and gem_install.sh scripts.\n")
       file_w.close
     end
     t1.join

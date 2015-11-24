@@ -60,11 +60,17 @@ Just enter the command "generic_gem".  When prompted, provide the name of your n
 
 ### Testing this gem
 
-After cloning this source code, cd your way into this directory and enter the command "sh gem_test.sh".
+After cloning this source code, cd your way into this directory and enter the command `sh gem_test.sh`.  Note that this script also runs the code_test.sh and gem_install.sh scripts.
+
+### Testing this gem's source code
+Enter the command `sh code_test.sh` to test the quality of the source code.
+
+### Running this gem in irb
+Enter the command `sh gem_console.sh`.
 
 ### Installing this gem
 
-After cloning this source code, cd your way into this directory and enter the command "sh gem_install.sh".
+Enter the command "sh gem_install.sh".
 
 ## Contributing
 
