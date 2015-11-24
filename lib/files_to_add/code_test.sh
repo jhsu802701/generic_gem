@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DIR_GENERIC_GEM=$PWD
 DIR_PARENT="${PWD%/*}"
+DIR_TMP="$DIR_PARENT/tmp"
 mkdir -p log
 rm -rf tmp
 

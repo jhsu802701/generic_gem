@@ -120,14 +120,13 @@ module GenericGem
   def self.add_bash_scripts(gem_name)
     puts '-------------------'
     puts 'Adding Bash scripts'
-    system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/gem_test.sh #{gem_name}")
-    system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/gem_install.sh #{gem_name}")
-    system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/gem_console.sh #{gem_name}")
+    system("cp #{ENV['DIR_MAIN']}/lib/files_to_add/*.sh #{gem_name}")
 
     puts '----------------------------------------------'
     puts "Adding 'gem uninstall' command to Bash scripts"
     str_old = '# uninstall'
     str_new = "gem uninstall #{gem_name}"
+    StringInFile.replace(str_old, str_new, "#{gem_name}/code_test.sh")
     StringInFile.replace(str_old, str_new, "#{gem_name}/gem_test.sh")
     StringInFile.replace(str_old, str_new, "#{gem_name}/gem_install.sh")
     StringInFile.replace(str_old, str_new, "#{gem_name}/gem_console.sh")
@@ -138,9 +137,10 @@ module GenericGem
     puts 'Updating the .gitignore file'
     puts 'Adding tmp* and .DS_Store'
     open("#{gem_name}/.gitignore", 'a') do |f|
-      f << '\ntmp*'
-      f << '\n.DS_Store'
-      f << '\n*.gem'
+      f << "\nlog/"
+      f << "\ntmp*"
+      f << "\n.DS_Store"
+      f << "\n*.gem"
     end
   end
 
