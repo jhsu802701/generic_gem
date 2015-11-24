@@ -70,7 +70,7 @@ Enter the command `sh gem_console.sh`.
 
 ### Installing this gem
 
-Enter the command "sh gem_install.sh".
+Enter the command `sh gem_install.sh`.
 
 ## Contributing
 
