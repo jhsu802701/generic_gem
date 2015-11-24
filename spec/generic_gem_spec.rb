@@ -59,6 +59,12 @@ describe GenericGem do
       expect(StringInFile.present("spec.add_development_dependency 'bundler-audit'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
       expect(StringInFile.present("spec.add_development_dependency 'gemsurance'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
       expect(StringInFile.present("spec.add_development_dependency 'ruby-graphviz'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'simplecov'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+    end
+
+    it 'spec_helper.rb includes simplecov' do
+      expect(StringInFile.present("require 'simplecov'", "#{dir_tmp}/spec/spec_helper.rb")).to eq(true)
+      expect(StringInFile.present('SimpleCov.start', "#{dir_tmp}/spec/spec_helper.rb")).to eq(true)
     end
 
     it 'The initial rspec tests are present and expect true == true' do

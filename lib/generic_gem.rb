@@ -22,6 +22,8 @@ module GenericGem
     add_gem_dep(gem_name, 'bundler-audit')
     add_gem_dep(gem_name, 'gemsurance')
     add_gem_dep(gem_name, 'ruby-graphviz')
+    add_gem_dep(gem_name, 'simplecov')
+    update_spec_helper(gem_name)
     update_tests(gem_name)
     update_bin_scripts(gem_name)
     add_rakefile(gem_name)
@@ -101,6 +103,19 @@ module GenericGem
     str2 = "\n  spec.add_development_dependency '#{gem_dep}'"
     str3 = "#{str1}#{str2}"
     StringInFile.replace(str1, str3, "#{gem_name}/#{gem_name}.gemspec")
+  end
+
+  def self.update_spec_helper(gem_name)
+    puts '----------------------------'
+    puts 'Updating spec/spec_helper.rb'
+    file_new = "#{gem_name}/spec/spec_helper_new.rb"
+    file_old = "#{gem_name}/spec/spec_helper.rb"
+    open(file_new, 'a') do |f|
+      f << "require 'simplecov'\n"
+      f << "SimpleCov.start\n\n"
+      f << File.read(file_old)
+    end
+    system("mv #{file_new} #{file_old}")
   end
 
   def self.update_tests(gem_name)
