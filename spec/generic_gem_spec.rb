@@ -53,6 +53,14 @@ describe GenericGem do
       expect(StringInFile.present('GENERIC SUMMARY', "#{dir_tmp}/tmp.gemspec")).to eq(true)
     end
 
+    it 'gemspec file includes additional gem dependencies' do
+      expect(StringInFile.present("spec.add_development_dependency 'rubocop'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'sandi_meter'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'bundler-audit'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'gemsurance'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+      expect(StringInFile.present("spec.add_development_dependency 'ruby-graphviz'", "#{dir_tmp}/tmp.gemspec")).to eq(true)
+    end
+
     it 'The initial rspec tests are present and expect true == true' do
       expect(StringInFile.present("require 'tmp'", "#{dir_tmp}/spec/spec_helper.rb")).to eq(true)
       expect(StringInFile.present('expect(false).to eq(true)', "#{dir_tmp}/spec/tmp_spec.rb")).to eq(false)
