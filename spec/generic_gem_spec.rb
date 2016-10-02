@@ -29,7 +29,7 @@ describe GenericGem do
     end
 
     it 'The Code of Conduct is present' do
-      expect(StringInFile.present('Contributor Code of Conduct', "#{dir_tmp}/CODE_OF_CONDUCT.md")).to eq(true)
+      expect(StringInFile.present('Code of Conduct', "#{dir_tmp}/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
     it 'Your name in the LICENSE.txt and gemspec files' do
@@ -68,7 +68,6 @@ describe GenericGem do
     end
 
     it 'The initial rspec tests are present and expect true == true' do
-      expect(StringInFile.present("require 'tmp'", "#{dir_tmp}/spec/spec_helper.rb")).to eq(true)
       expect(StringInFile.present('expect(false).to eq(true)', "#{dir_tmp}/spec/tmp_spec.rb")).to eq(false)
       expect(StringInFile.present('expect(true).to eq(true)', "#{dir_tmp}/spec/tmp_spec.rb")).to eq(true)
     end
