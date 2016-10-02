@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'string_in_file'
   spec.add_runtime_dependency 'replace_quotes'
+  spec.add_runtime_dependency 'line_containing'
 end

@@ -1,6 +1,7 @@
 require 'generic_gem/version'
 require 'string_in_file'
 require 'replace_quotes'
+require 'line_containing'
 
 #
 module GenericGem
@@ -61,6 +62,7 @@ module GenericGem
     StringInFile.replace('0.1.0', '0.0.0', "#{gem_name}/lib/#{gem_name}/version.rb")
     ReplaceQuotes.update("#{gem_name}/lib/#{gem_name}/version.rb")
     StringInFile.replace('module', "#\nmodule", "#{gem_name}/lib/#{gem_name}/version.rb")
+    StringInFile.replace("'0.0.0'", "'0.0.0'.freeze", "#{gem_name}/lib/#{gem_name}/version.rb")
   end
 
   def self.add_name(gem_name, your_name)
@@ -91,9 +93,14 @@ module GenericGem
     ReplaceQuotes.update("#{gem_name}/#{gem_name}.gemspec")
     StringInFile.replace("'\\x0'", '"\\x0"', "#{gem_name}/#{gem_name}.gemspec")
 
-    puts '--------------------------------------------------------------'
-    puts "Replace 'raise' in #{gem_name}/#{gem_name}.gemspec with 'fail'"
-    StringInFile.replace("raise 'RubyGems", "fail 'RubyGems", "#{gem_name}/#{gem_name}.gemspec")
+    puts '----------------------------------------------------'
+    puts "Updating #{gem_name}.gemspec to remove excess spaces"
+    while StringInFile.present('  =', "#{gem_name}/#{gem_name}.gemspec")
+      StringInFile.replace('  =', ' =', "#{gem_name}/#{gem_name}.gemspec")
+    end
+    # puts '--------------------------------------------------------------'
+    # puts "Replace 'raise' in #{gem_name}/#{gem_name}.gemspec with 'fail'"
+    # StringInFile.replace("raise 'RubyGems", "fail 'RubyGems", "#{gem_name}/#{gem_name}.gemspec")
   end
 
   def self.add_gem_dep(gem_name, gem_dep)
@@ -101,8 +108,7 @@ module GenericGem
     puts "Adding #{gem_dep} development dependency"
     str1 = "spec.add_development_dependency 'rspec'"
     str2 = "\n  spec.add_development_dependency '#{gem_dep}'"
-    str3 = "#{str1}#{str2}"
-    StringInFile.replace(str1, str3, "#{gem_name}/#{gem_name}.gemspec")
+    LineContaining.add_after(str1, str2, "#{gem_name}/#{gem_name}.gemspec")
   end
 
   def self.update_spec_helper(gem_name)
@@ -116,12 +122,16 @@ module GenericGem
       f << File.read(file_old)
     end
     system("mv #{file_new} #{file_old}")
+    ReplaceQuotes.update(file_old)
   end
 
   def self.update_tests(gem_name)
     puts '--------------------------------'
     puts 'Revising the initial rspec tests'
     StringInFile.replace('expect(false).to eq(true)', 'expect(true).to eq(true)', "#{gem_name}/spec/#{gem_name}_spec.rb")
+    puts '----------------------------------------'
+    puts 'Convering double quotes to single quotes'
+    ReplaceQuotes.update("#{gem_name}/spec/#{gem_name}_spec.rb")
   end
 
   def self.update_bin_scripts(gem_name)
