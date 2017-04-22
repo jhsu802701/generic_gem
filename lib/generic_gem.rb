@@ -15,6 +15,7 @@ module GenericGem
 
     bundle_config
     bundle_gem(gem_name)
+    copy_credentials_sh(gem_name)
     update_version(gem_name)
     add_name(gem_name, your_name)
     update_gemspec(gem_name, your_email)
@@ -55,6 +56,13 @@ module GenericGem
     end
     t1.join
   end
+
+  def self.copy_credentials_sh(gem_name)
+    puts '----------------------'
+    puts 'Copying credentials.sh'
+    system("cp #{ENV['DIR_MAIN']}/credentials.sh #{gem_name}")
+  end
+
 
   def self.update_version(gem_name)
     puts '----------------------'

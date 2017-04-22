@@ -32,6 +32,11 @@ describe GenericGem do
       expect(StringInFile.present('Code of Conduct', "#{dir_tmp}/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
+    it 'The credentials.sh script is present' do
+      expect(StringInFile.present('git config --global user.email', "#{dir_tmp}/credentials.sh")).to eq(true)
+      expect(StringInFile.present('git config --global user.name', "#{dir_tmp}/credentials.sh")).to eq(true)
+    end
+
     it 'Your name in the LICENSE.txt and gemspec files' do
       expect(StringInFile.present('James Bond', "#{dir_tmp}/LICENSE.txt")).to eq(true)
       expect(StringInFile.present('TODO: Write your name', "#{dir_tmp}/LICENSE.txt")).to eq(false)

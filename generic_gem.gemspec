@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'gemsurance'
   spec.add_development_dependency 'ruby-graphviz'
 
-  spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'simplecov'
 
   spec.add_runtime_dependency 'string_in_file'
