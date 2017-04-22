@@ -12,7 +12,6 @@ describe GenericGem do
   end
 
   describe 'process' do
-    system('env')
     dir_parent = File.expand_path('..', Dir.pwd)
     dir_tmp = "#{dir_parent}/tmp"
     system("rm -rf #{dir_tmp}")

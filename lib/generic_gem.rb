@@ -64,7 +64,9 @@ module GenericGem
   def self.enter_credentials_sh(gem_name)
     puts '-----------------------------------'
     puts 'Entering credentials (if necessary)'
-    system("sh #{gem_name}/credentials.sh")
+
+    # Skip this step in Travis
+    system("sh #{gem_name}/credentials.sh") if ENV['TRAVIS'] != 'true'
   end
 
   def self.update_version(gem_name)
