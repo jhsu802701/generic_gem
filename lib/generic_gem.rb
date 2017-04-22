@@ -99,9 +99,10 @@ module GenericGem
     while StringInFile.present('  =', "#{gem_name}/#{gem_name}.gemspec")
       StringInFile.replace('  =', ' =', "#{gem_name}/#{gem_name}.gemspec")
     end
-    # puts '--------------------------------------------------------------'
-    # puts "Replace 'raise' in #{gem_name}/#{gem_name}.gemspec with 'fail'"
-    # StringInFile.replace("raise 'RubyGems", "fail 'RubyGems", "#{gem_name}/#{gem_name}.gemspec")
+
+    puts '------------------------------------------------------------------'
+    puts "Updating #{gem_name}.gemspec to add empty line after magic comment"
+    LineContaining.add_after('# coding: utf-8', '', "#{gem_name}/#{gem_name}.gemspec")
   end
 
   def self.add_gem_dep(gem_name, gem_dep)
