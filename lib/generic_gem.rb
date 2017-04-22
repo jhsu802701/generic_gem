@@ -16,6 +16,7 @@ module GenericGem
     bundle_config
     bundle_gem(gem_name)
     copy_credentials_sh(gem_name)
+    enter_credentials_sh(gem_name)
     update_version(gem_name)
     add_name(gem_name, your_name)
     update_gemspec(gem_name, your_email)
@@ -63,6 +64,11 @@ module GenericGem
     system("cp #{ENV['DIR_MAIN']}/credentials.sh #{gem_name}")
   end
 
+  def self.enter_credentials_sh(gem_name)
+    puts '-----------------------------------'
+    puts 'Entering credentials (if necessary)'
+    system("sh #{gem_name}/credentials.sh")
+  end
 
   def self.update_version(gem_name)
     puts '----------------------'
