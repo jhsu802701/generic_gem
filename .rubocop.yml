@@ -2,6 +2,10 @@ Metrics/AbcSize:
   Exclude:
     - lib/generic_gem.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/generic_gem_spec.rb
+
 Metrics/LineLength:
   Exclude:
     - bin/generic_gem
