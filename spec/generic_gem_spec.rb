@@ -16,7 +16,7 @@ describe GenericGem do
     dir_tmp = "#{dir_parent}/tmp"
     system("rm -rf #{dir_tmp}")
     Dir.chdir(dir_parent) do
-      GenericGem.create('tmp', 'James Bond', 'jbond@example.com')
+      GenericGem.create('tmp')
     end
     it 'Bundler has the proper configuration settings' do
       expect(StringInFile.present('BUNDLE_GEM__COC: true', "#{ENV['HOME']}/.bundle/config")).to eq(true)
@@ -32,15 +32,9 @@ describe GenericGem do
       expect(StringInFile.present('Code of Conduct', "#{dir_tmp}/CODE_OF_CONDUCT.md")).to eq(true)
     end
 
-    it 'Your name in the LICENSE.txt and gemspec files' do
-      expect(StringInFile.present('James Bond', "#{dir_tmp}/LICENSE.txt")).to eq(true)
-      expect(StringInFile.present('TODO: Write your name', "#{dir_tmp}/LICENSE.txt")).to eq(false)
-      expect(StringInFile.present('TODO: Write your name', "#{dir_tmp}/tmp.gemspec")).to eq(false)
-      expect(StringInFile.present('James Bond', "#{dir_tmp}/tmp.gemspec")).to eq(true)
-    end
-
-    it 'Your email address is in the gemspec file' do
-      expect(StringInFile.present('jbond@example.com', "#{dir_tmp}/tmp.gemspec")).to eq(true)
+    it 'The credentials.sh script is present' do
+      expect(StringInFile.present('git config --global user.email', "#{dir_tmp}/credentials.sh")).to eq(true)
+      expect(StringInFile.present('git config --global user.name', "#{dir_tmp}/credentials.sh")).to eq(true)
     end
 
     it 'A generic gem description should replace the default description in the gemspec file' do

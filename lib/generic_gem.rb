@@ -5,19 +5,18 @@ require 'line_containing'
 
 #
 module GenericGem
-  def self.create(gem_name, your_name, your_email)
+  def self.create(gem_name)
     puts '**********************'
     puts 'Welcome to Generic Gem'
     puts "GEM NAME: #{gem_name}"
-    puts "YOUR NAME: #{your_name}"
-    puts "YOUR EMAIL: #{your_email}"
     ENV['DIR_MAIN'] = File.expand_path('../../', __FILE__)
 
     bundle_config
     bundle_gem(gem_name)
+    copy_credentials_sh(gem_name)
+    enter_credentials_sh(gem_name)
     update_version(gem_name)
-    add_name(gem_name, your_name)
-    update_gemspec(gem_name, your_email)
+    update_gemspec(gem_name)
     add_gem_dep(gem_name, 'rubocop')
     add_gem_dep(gem_name, 'sandi_meter')
     add_gem_dep(gem_name, 'bundler-audit')
@@ -56,6 +55,20 @@ module GenericGem
     t1.join
   end
 
+  def self.copy_credentials_sh(gem_name)
+    puts '----------------------'
+    puts 'Copying credentials.sh'
+    system("cp #{ENV['DIR_MAIN']}/credentials.sh #{gem_name}")
+  end
+
+  def self.enter_credentials_sh(gem_name)
+    puts '-----------------------------------'
+    puts 'Entering credentials (if necessary)'
+
+    # Skip this step in Travis
+    system("sh #{gem_name}/credentials.sh") if ENV['TRAVIS'] != 'true'
+  end
+
   def self.update_version(gem_name)
     puts '----------------------'
     puts 'Initial version: 0.0.0'
@@ -65,19 +78,7 @@ module GenericGem
     StringInFile.replace("'0.0.0'", "'0.0.0'.freeze", "#{gem_name}/lib/#{gem_name}/version.rb")
   end
 
-  def self.add_name(gem_name, your_name)
-    puts '-----------------------------------------------------------'
-    puts "Filling in your name in LICENSE.txt and #{gem_name}.gemspec"
-    puts "Your name: #{your_name}"
-    StringInFile.replace('TODO: Write your name', your_name, "#{gem_name}/LICENSE.txt")
-    StringInFile.replace('TODO: Write your name', your_name, "#{gem_name}/#{gem_name}.gemspec")
-  end
-
-  def self.update_gemspec(gem_name, your_email)
-    puts '----------------------------------------------------'
-    puts "Filling in your email address in #{gem_name}.gemspec"
-    StringInFile.replace('TODO: Write your email address', your_email, "#{gem_name}/#{gem_name}.gemspec")
-
+  def self.update_gemspec(gem_name)
     puts '-----------------------------------------------------'
     puts "Filling in the gem description in #{gem_name}.gemspec"
     StringInFile.replace('TODO: Write a longer description or delete this line.', 'GENERIC DESCRIPTION', "#{gem_name}/#{gem_name}.gemspec")
@@ -98,9 +99,10 @@ module GenericGem
     while StringInFile.present('  =', "#{gem_name}/#{gem_name}.gemspec")
       StringInFile.replace('  =', ' =', "#{gem_name}/#{gem_name}.gemspec")
     end
-    # puts '--------------------------------------------------------------'
-    # puts "Replace 'raise' in #{gem_name}/#{gem_name}.gemspec with 'fail'"
-    # StringInFile.replace("raise 'RubyGems", "fail 'RubyGems", "#{gem_name}/#{gem_name}.gemspec")
+
+    puts '------------------------------------------------------------------'
+    puts "Updating #{gem_name}.gemspec to add empty line after magic comment"
+    LineContaining.add_after('# coding: utf-8', '', "#{gem_name}/#{gem_name}.gemspec")
   end
 
   def self.add_gem_dep(gem_name, gem_dep)
