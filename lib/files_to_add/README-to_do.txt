@@ -1,3 +1,7 @@
+UPDATING THE *.gemspec file
+* Provide a gem summary, a gem description, and a homepage.
+* Remove the metadata section.
+
 BADGES for README.md
 * Version Badge: http://badge.fury.io/
 * Gemnasium: https://gemnasium.com/

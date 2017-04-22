@@ -10,28 +10,15 @@ puts 'Enter the name of the gem you wish to create:'
 subdir_name = gets.chomp
 subdir_name = 'tmp1' if subdir_name == ''
 
-puts
-puts 'DEFAULT VALUE: Marie Curie'
-puts 'Enter your name:'
-your_name = gets.chomp
-your_name = 'Marie Curie' if your_name == ''
+system('sh generic_gem/credentials.sh')
 
-puts
-puts 'DEFAULT VALUE: mcurie@example.com'
-puts 'Enter your email address:'
-your_email = gets.chomp
-your_email = 'mcurie@example.com' if your_email == ''
-
-GenericGem.create(subdir_name, your_name, your_email)
+GenericGem.create(subdir_name)
 system("cd #{subdir_name} && sh gem_test.sh")
 
 puts
 puts '******************************'
 puts 'Your new gem is ready to roll.'
 puts "GEM NAME: #{subdir_name}"
-puts "YOUR NAME: #{your_name}"
-puts "YOUR EMAIL: #{your_email}"
-puts "Please remember to fill in the rest of your #{subdir_name}.gemspec file."
-puts 'You still need to provide a gem summary, a gem description, and a homepage.'
-puts 'You also need to remove the metadata section.'
+puts
+puts "There is a list of additional steps in the #{subdir_name}/README-to_do.txt file."
 puts
