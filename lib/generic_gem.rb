@@ -18,7 +18,7 @@ module GenericGem
     copy_credentials_sh(gem_name)
     enter_credentials_sh(gem_name)
     update_version(gem_name)
-    update_gemspec(gem_name, your_email)
+    update_gemspec(gem_name)
     add_gem_dep(gem_name, 'rubocop')
     add_gem_dep(gem_name, 'sandi_meter')
     add_gem_dep(gem_name, 'bundler-audit')
@@ -78,11 +78,7 @@ module GenericGem
     StringInFile.replace("'0.0.0'", "'0.0.0'.freeze", "#{gem_name}/lib/#{gem_name}/version.rb")
   end
 
-  def self.update_gemspec(gem_name, your_email)
-    puts '----------------------------------------------------'
-    puts "Filling in your email address in #{gem_name}.gemspec"
-    StringInFile.replace('TODO: Write your email address', your_email, "#{gem_name}/#{gem_name}.gemspec")
-
+  def self.update_gemspec(gem_name)
     puts '-----------------------------------------------------'
     puts "Filling in the gem description in #{gem_name}.gemspec"
     StringInFile.replace('TODO: Write a longer description or delete this line.', 'GENERIC DESCRIPTION', "#{gem_name}/#{gem_name}.gemspec")

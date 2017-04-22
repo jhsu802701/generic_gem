@@ -37,10 +37,6 @@ describe GenericGem do
       expect(StringInFile.present('git config --global user.name', "#{dir_tmp}/credentials.sh")).to eq(true)
     end
 
-    it 'Your email address is in the gemspec file' do
-      expect(StringInFile.present('jbond@example.com', "#{dir_tmp}/tmp.gemspec")).to eq(true)
-    end
-
     it 'A generic gem description should replace the default description in the gemspec file' do
       expect(StringInFile.present('TODO: Write a longer description', "#{dir_tmp}/tmp.gemspec")).to eq(false)
       expect(StringInFile.present('GENERIC DESCRIPTION', "#{dir_tmp}/tmp.gemspec")).to eq(true)
