@@ -5,12 +5,10 @@ require 'line_containing'
 
 #
 module GenericGem
-  def self.create(gem_name, your_name, your_email)
+  def self.create(gem_name)
     puts '**********************'
     puts 'Welcome to Generic Gem'
     puts "GEM NAME: #{gem_name}"
-    puts "YOUR NAME: #{your_name}"
-    puts "YOUR EMAIL: #{your_email}"
     ENV['DIR_MAIN'] = File.expand_path('../../', __FILE__)
 
     bundle_config

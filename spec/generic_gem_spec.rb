@@ -16,7 +16,7 @@ describe GenericGem do
     dir_tmp = "#{dir_parent}/tmp"
     system("rm -rf #{dir_tmp}")
     Dir.chdir(dir_parent) do
-      GenericGem.create('tmp', 'James Bond', 'jbond@example.com')
+      GenericGem.create('tmp')
     end
     it 'Bundler has the proper configuration settings' do
       expect(StringInFile.present('BUNDLE_GEM__COC: true', "#{ENV['HOME']}/.bundle/config")).to eq(true)
