@@ -18,7 +18,6 @@ module GenericGem
     copy_credentials_sh(gem_name)
     enter_credentials_sh(gem_name)
     update_version(gem_name)
-    add_name(gem_name, your_name)
     update_gemspec(gem_name, your_email)
     add_gem_dep(gem_name, 'rubocop')
     add_gem_dep(gem_name, 'sandi_meter')
@@ -77,14 +76,6 @@ module GenericGem
     ReplaceQuotes.update("#{gem_name}/lib/#{gem_name}/version.rb")
     StringInFile.replace('module', "#\nmodule", "#{gem_name}/lib/#{gem_name}/version.rb")
     StringInFile.replace("'0.0.0'", "'0.0.0'.freeze", "#{gem_name}/lib/#{gem_name}/version.rb")
-  end
-
-  def self.add_name(gem_name, your_name)
-    puts '-----------------------------------------------------------'
-    puts "Filling in your name in LICENSE.txt and #{gem_name}.gemspec"
-    puts "Your name: #{your_name}"
-    StringInFile.replace('TODO: Write your name', your_name, "#{gem_name}/LICENSE.txt")
-    StringInFile.replace('TODO: Write your name', your_name, "#{gem_name}/#{gem_name}.gemspec")
   end
 
   def self.update_gemspec(gem_name, your_email)
