@@ -1,10 +1,2 @@
-UPDATING THE *.gemspec file
-* Provide a gem summary, a gem description, and a homepage.
-* Remove the metadata section.
-
-BADGES for README.md
-* Version Badge: http://badge.fury.io/
-* Gemnasium: https://gemnasium.com/
-* Travis CI: https://travis-ci.org/ (SPECIAL NOTE: There are incorrect procedures out there.  You must go into your Travis CI settings and add the Code Climate repository token as an environment variable.)
-* Code Climate: https://codeclimate.com/
-* Hakiri: https://hakiri.io/
+Go to the following URL for further instructions:
+https://gist.github.com/jhsu802701/7b75e8cafed30913005d8269389433b4
