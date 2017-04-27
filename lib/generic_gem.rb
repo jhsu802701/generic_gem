@@ -79,15 +79,24 @@ module GenericGem
   end
 
   def self.update_gemspec(gem_name)
-    puts '-----------------------------------------------------'
-    puts "Filling in the gem description in #{gem_name}.gemspec"
-    StringInFile.replace('TODO: Write a longer description or delete this line.', 'GENERIC DESCRIPTION', "#{gem_name}/#{gem_name}.gemspec")
-    StringInFile.replace('%q{GENERIC DESCRIPTION}', "'GENERIC DESCRIPTION'", "#{gem_name}/#{gem_name}.gemspec")
+    puts '----------------------------------------------'
+    puts "Filling in spec.summary in #{gem_name}.gemspec"
+    summary = "  spec.summary       = 'GENERIC SUMMARY'"
+    LineContaining.replace('spec.summary', summary, "#{gem_name}/#{gem_name}.gemspec")
 
-    puts '-------------------------------------------------'
-    puts "Filling in the gem summary in #{gem_name}.gemspec"
-    StringInFile.replace('TODO: Write a short summary, because Rubygems requires one.', 'GENERIC SUMMARY', "#{gem_name}/#{gem_name}.gemspec")
-    StringInFile.replace('%q{GENERIC SUMMARY}', "'GENERIC SUMMARY'", "#{gem_name}/#{gem_name}.gemspec")
+    puts '--------------------------------------------------'
+    puts "Filling in spec.description in #{gem_name}.gemspec"
+    desc = "  spec.description   = 'GENERIC DESCRIPTION'"
+    LineContaining.replace('spec.description', desc, "#{gem_name}/#{gem_name}.gemspec")
+
+    puts '-----------------------------------------------'
+    puts "Filling in spec.homepage in #{gem_name}.gemspec"
+    homepage = "  spec.homepage      = 'HTTP://WWW.EXAMPLE.COM'"
+    LineContaining.replace('spec.homepage', homepage, "#{gem_name}/#{gem_name}.gemspec")
+
+    puts '------------------------------------------------------------------'
+    puts "Removing instances of 'TODO:' from #{gem_name}/#{gem_name}.gemspec"
+    LineContaining.replace('TODO: ', '', "#{gem_name}/#{gem_name}.gemspec")
 
     puts '---------------------------------------------------'
     puts "Updating #{gem_name}.gemspec for RuboCop compliance"

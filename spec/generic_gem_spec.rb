@@ -37,14 +37,12 @@ describe GenericGem do
       expect(StringInFile.present('git config --global user.name', "#{dir_tmp}/credentials.sh")).to eq(true)
     end
 
-    it 'A generic gem description should replace the default description in the gemspec file' do
-      expect(StringInFile.present('TODO: Write a longer description', "#{dir_tmp}/tmp.gemspec")).to eq(false)
-      expect(StringInFile.present('GENERIC DESCRIPTION', "#{dir_tmp}/tmp.gemspec")).to eq(true)
+    it "'TODO:' should not be in the gemspec file" do
+      expect(StringInFile.present('TODO:', "#{dir_tmp}/tmp.gemspec")).to eq(false)
     end
 
-    it 'A generic gem summary should replace the default summary in the gemspec file' do
-      expect(StringInFile.present('TODO: Write a short summary', "#{dir_tmp}/tmp.gemspec")).to eq(false)
-      expect(StringInFile.present('GENERIC SUMMARY', "#{dir_tmp}/tmp.gemspec")).to eq(true)
+    it "'URL' should not be in the gemspec file" do
+      expect(StringInFile.present('URL', "#{dir_tmp}/tmp.gemspec")).to eq(false)
     end
 
     it 'gemspec file includes additional gem dependencies' do
