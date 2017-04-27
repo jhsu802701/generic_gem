@@ -111,11 +111,7 @@ describe GenericGem do
     end
 
     it 'The README-to_do.txt file is provided' do
-      expect(StringInFile.present('http://badge.fury.io/', "#{dir_tmp}/README-to_do.txt")).to eq(true)
-      expect(StringInFile.present('https://gemnasium.com/', "#{dir_tmp}/README-to_do.txt")).to eq(true)
-      expect(StringInFile.present('https://travis-ci.org/', "#{dir_tmp}/README-to_do.txt")).to eq(true)
-      expect(StringInFile.present('https://codeclimate.com/', "#{dir_tmp}/README-to_do.txt")).to eq(true)
-      expect(StringInFile.present('https://hakiri.io/', "#{dir_tmp}/README-to_do.txt")).to eq(true)
+      expect(StringInFile.present('Go to the following URL for further instructions', "#{dir_tmp}/README-to_do.txt")).to eq(true)
     end
 
     it 'The .gitignore file includes tmp, tmp*, and ,DS_Store' do
